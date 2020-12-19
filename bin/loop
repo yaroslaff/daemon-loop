@@ -8,6 +8,7 @@ import sys
 import os
 import daemon
 import contextlib
+import distutils.spawn
 
 
 def get_args():
@@ -79,6 +80,8 @@ def main():
     
     if args.log and args.log != '-':
         args.log = os.path.abspath(args.log)
+
+    args.command[0] = distutils.spawn.find_executable(args.command[0])
 
     if(args.daemon):
         with daemon.DaemonContext():

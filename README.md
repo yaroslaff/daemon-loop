@@ -75,3 +75,6 @@ log file will look like this:
 # 2020-12-20 05:39:11 finished with status 0
 
 ~~~ 
+
+## Caveats
+If `--daemon` used, loop will chdir to '/'. Loop will automatically adjust path to logfile and executable, but you should care about other parameters. For example, command `loop -d -- touch myfile` started from user home will touch `/myfile` (in root), and most likely will fail.
